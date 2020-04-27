@@ -1,0 +1,1 @@
+# DCMI Type Archetype
