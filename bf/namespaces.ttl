@@ -1,0 +1,1 @@
+prefix bf: <http://id.loc.gov/ontologies/bibframe/>
