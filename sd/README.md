@@ -1,0 +1,1 @@
+# SPARQL Service Description Archetype
