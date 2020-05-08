@@ -1,0 +1,1 @@
+prefix svcs: <http://rdfs.org/sioc/services#>
