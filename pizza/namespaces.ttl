@@ -1,0 +1,4 @@
+prefix pizza: <http://www.co-ode.org/ontologies/pizza/pizza.owl#>
+prefix dcterms: <http://purl.org/dc/terms/>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix dce: <http://purl.org/dc/elements/1.1/>
