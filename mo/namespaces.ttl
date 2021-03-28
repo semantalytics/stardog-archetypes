@@ -1,0 +1,7 @@
+prefix mo: <http://purl.org/ontology/mo/>
+prefix dc: <http://purl.org/dc/elements/1.1/>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix tl: <http://purl.org/NET/c4dm/timeline.owl#>
+prefix event: <http://purl.org/NET/c4dm/event.owl#>
+prefix foaf: <http://xmlns.com/foaf/0.1/>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#">
