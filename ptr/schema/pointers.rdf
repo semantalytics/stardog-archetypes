@@ -1,0 +1,205 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+	<!-- Generic Pointer class -->
+	<rdfs:Class rdf:about="#Pointer">
+		<rdfs:label xml:lang="en">Pointer</rdfs:label>
+		<rdfs:comment xml:lang="en">Abstract Pointer to be subclassed for extensibility.</rdfs:comment>
+	</rdfs:Class>
+	<!-- Pointers Group class -->
+	<rdfs:Class rdf:about="#PointersGroup">
+		<rdfs:label xml:lang="en">Pointers Group</rdfs:label>
+		<rdfs:comment xml:lang="en">Generic container for a group of Pointers</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#Pointer"/>
+	</rdfs:Class>
+	<rdf:Property rdf:about="#groupPointer">
+		<rdfs:label xml:lang="en">groupPointer</rdfs:label>
+		<rdfs:comment xml:lang="en">A Pointer that is part of a Group</rdfs:comment>
+		<rdfs:domain rdf:resource="#PointersGroup"/>
+		<rdfs:range rdf:resource="#Pointer"/>
+	</rdf:Property>
+	<!-- Related Pointers class -->
+	<rdfs:Class rdf:about="#RelatedPointers">
+		<rdfs:label xml:lang="en">Related Pointers</rdfs:label>
+		<rdfs:comment xml:lang="en">Group of related pointers you use together for some purpose.</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#PointersGroup"/>
+	</rdfs:Class>
+	<!-- Equivalent Pointers class -->
+	<rdfs:Class rdf:about="#EquivalentPointers">
+		<rdfs:label xml:lang="en">Equivalent Pointers</rdfs:label>
+		<rdfs:comment xml:lang="en">Group of equivalent pointers that point to the same places.</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#PointersGroup"/>
+	</rdfs:Class>
+	<!-- Single Pointer class -->
+	<rdfs:Class rdf:about="#SinglePointer">
+		<rdfs:label xml:lang="en">Single Pointer</rdfs:label>
+		<rdfs:comment xml:lang="en">Abstract pointer to a single point to be subclassed for extensibility.</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#Pointer"/>
+	</rdfs:Class>
+	<rdf:Property rdf:about="#reference">
+		<rdfs:label xml:lang="en">reference</rdfs:label>
+		<rdfs:comment xml:lang="en">Scope within which a single pointer operates.</rdfs:comment>
+		<rdfs:domain rdf:resource="#SinglePointer"/>
+	</rdf:Property>
+	<!-- Expression Pointer class -->
+	<rdfs:Class rdf:about="#ExpressionPointer">
+		<rdfs:label xml:lang="en">Expression Pointer</rdfs:label>
+		<rdfs:comment xml:lang="en">Generic single pointer that make use of an expression language such as xPath, CSS selectors, etc.</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#SinglePointer"/>
+	</rdfs:Class>
+	<rdf:Property rdf:about="#expression">
+		<rdfs:label xml:lang="en">expression</rdfs:label>
+		<rdfs:comment xml:lang="en">Expressions, such as xPath or CSS selectors, that identify points.</rdfs:comment>
+		<rdfs:domain rdf:resource="#ExpressionPointer"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	</rdf:Property>
+		<rdf:Property rdf:about="#version">
+		<rdfs:label xml:lang="en">version</rdfs:label>
+		<rdfs:comment xml:lang="en">Version for the expression language being used.</rdfs:comment>
+		<rdfs:domain rdf:resource="#ExpressionPointer"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	</rdf:Property>
+	<!-- XPath Pointer class -->
+	<rdfs:Class rdf:about="#XPathPointer">
+		<rdfs:label xml:lang="en">XPath Pointer</rdfs:label>
+		<rdfs:comment xml:lang="en">Single pointer using an XPath expression.</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#ExpressionPointer"/>
+	</rdfs:Class>
+	<rdf:Property rdf:about="#namespace">
+		<rdfs:label xml:lang="en">namespace</rdfs:label>
+		<rdfs:comment xml:lang="en">The namespace being used for the XPath expression.</rdfs:comment>
+		<rdfs:domain rdf:resource="#XPathPointer"/>
+		<rdfs:range rdf:resource="#XMLNamespace"/>
+	</rdf:Property>
+	<!-- XMLNamespace class -->
+	<rdfs:Class rdf:about="#XMLNamespace">
+		<rdfs:label xml:lang="en">XMLNamespace</rdfs:label>
+		<rdfs:comment xml:lang="en">An XML Namespace.</rdfs:comment>
+	</rdfs:Class>
+	<rdf:Property rdf:about="#prefix">
+		<rdfs:label xml:lang="en">prefix</rdfs:label>
+		<rdfs:comment xml:lang="en">The namespace prefix being used for an XML Namespace.</rdfs:comment>
+		<rdfs:domain rdf:resource="#XMLNamespace"/>
+	</rdf:Property>
+	<rdf:Property rdf:about="#namespaceName">
+		<rdfs:label xml:lang="en">namespace name</rdfs:label>
+		<rdfs:comment xml:lang="en">The namespace name being used for an XML Namespace.</rdfs:comment>
+		<rdfs:domain rdf:resource="#XMLNamespace"/>
+	</rdf:Property>
+	<!-- XPointer Pointer class -->
+	<rdfs:Class rdf:about="#XPointerPointer">
+		<rdfs:label xml:lang="en">XPointer Pointer</rdfs:label>
+		<rdfs:comment xml:lang="en">Single pointer using an XPointer expression.</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#XPathPointer"/>
+	</rdfs:Class>
+	<!-- CSS Selector Pointer class -->
+	<rdfs:Class rdf:about="#CSSSelectorPointer">
+		<rdfs:label xml:lang="en">CSS selector Pointer</rdfs:label>
+		<rdfs:comment xml:lang="en">Single pointer using a CSS selector.</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#ExpressionPointer"/>
+	</rdfs:Class>
+	<!-- Offset Pointer class -->
+	<rdfs:Class rdf:about="#OffsetPointer">
+		<rdfs:label xml:lang="en">Offset Pointer</rdfs:label>
+		<rdfs:comment xml:lang="en">Generic single pointer based on an offset.</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#SinglePointer"/>
+	</rdfs:Class>
+	<rdf:Property rdf:about="#offset">
+		<rdfs:label xml:lang="en">offset</rdfs:label>
+		<rdfs:comment xml:lang="en">Offset from the start of the reference.</rdfs:comment>
+		<rdfs:domain rdf:resource="#OffsetPointer"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+	</rdf:Property>
+	<!-- Char Offset Pointer class -->
+	<rdfs:Class rdf:about="#CharOffsetPointer">
+		<rdfs:label xml:lang="en">Char Offset Pointer</rdfs:label>
+		<rdfs:comment xml:lang="en">Single pointer using a character offset from the start of the reference.</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#OffsetPointer"/>
+	</rdfs:Class>
+	<!-- Byte Offset Pointer class -->
+	<rdfs:Class rdf:about="#ByteOffsetPointer">
+		<rdfs:label xml:lang="en">Byte Offset Pointer</rdfs:label>
+		<rdfs:comment xml:lang="en">Single pointer using a byte offset from the start of the reference.</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#OffsetPointer"/>
+	</rdfs:Class>
+	<!-- Line Char Pointer class -->
+	<rdfs:Class rdf:about="#LineCharPointer">
+		<rdfs:label xml:lang="en">Line-Char Pointer</rdfs:label>
+		<rdfs:comment xml:lang="en">Single pointer using line and char numbers.</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#SinglePointer"/>
+	</rdfs:Class>
+	<rdf:Property rdf:about="#lineNumber">
+		<rdfs:label xml:lang="en">line number</rdfs:label>
+		<rdfs:comment xml:lang="en">Line number within the reference starting at one.
+		</rdfs:comment>
+		<rdfs:domain rdf:resource="#LineCharPointer"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+	</rdf:Property>
+	<rdf:Property rdf:about="#charNumber">
+		<rdfs:label xml:lang="en">char number</rdfs:label>
+		<rdfs:comment xml:lang="en">Char number within a line starting at one.
+		</rdfs:comment>
+		<rdfs:domain rdf:resource="#LineCharPointer"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+	</rdf:Property>
+	<!-- Compound Pointer class -->
+	<rdfs:Class rdf:about="#CompoundPointer">
+		<rdfs:label xml:lang="en">Compound Pointer</rdfs:label>
+		<rdfs:comment xml:lang="en">An abstract method made of a pair of pointers to a defined section to be subclassed for extensibility.</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#Pointer"/>
+	</rdfs:Class>
+	<rdf:Property rdf:about="#startPointer">
+		<rdfs:label xml:lang="en">start pointer</rdfs:label>
+		<rdfs:comment xml:lang="en">Pointer to the start point of the range in a compound pointer.</rdfs:comment>
+		<rdfs:domain rdf:resource="#CompoundPointer"/>
+		<rdfs:range rdf:resource="#SinglePointer"/>
+	</rdf:Property>
+	<!-- Start-End Pointer class -->
+	<rdfs:Class rdf:about="#StartEndPointer">
+		<rdfs:label xml:lang="en">Start-End Pointer</rdfs:label>
+		<rdfs:comment xml:lang="en">Compound pointer to a range with a start and an end point.</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#CompoundPointer"/>
+	</rdfs:Class>
+	<rdf:Property rdf:about="#endPointer">
+		<rdfs:label xml:lang="en">end pointer</rdfs:label>
+		<rdfs:comment xml:lang="en">Pointer to the end point of the range.</rdfs:comment>
+		<rdfs:domain rdf:resource="#StartEndPointer"/>
+		<rdfs:range rdf:resource="#SinglePointer"/>
+	</rdf:Property>
+	<!-- Char Offset Compound Pointer class -->
+	<rdfs:Class rdf:about="#CharOffsetCompoundPointer">
+		<rdfs:label xml:lang="en">Char Offset Compound Pointer</rdfs:label>
+		<rdfs:comment xml:lang="en">Pointer to a char range with a defined start and a char offset from there.</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#CompoundPointer"/>
+	</rdfs:Class>
+	<rdf:Property rdf:about="#charOffset">
+		<rdfs:label xml:lang="en">char offset</rdfs:label>
+		<rdfs:comment xml:lang="en">Number of characters counting from the start point.</rdfs:comment>
+		<rdfs:domain rdf:resource="#CharOffsetCompoundPointer"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+	</rdf:Property>
+	<!-- Byte Offset Compound Pointer class -->
+	<rdfs:Class rdf:about="#ByteOffsetCompoundPointer">
+		<rdfs:label xml:lang="en">Byte Offset Compound Pointer</rdfs:label>
+		<rdfs:comment xml:lang="en">Pointer to a byte range with a defined start and a byte offset from there.</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#CompoundPointer"/>
+	</rdfs:Class>
+	<rdf:Property rdf:about="#byteOffset">
+		<rdfs:label>byte offset</rdfs:label>
+		<rdfs:comment>Number of bytes counting from the start point.</rdfs:comment>
+		<rdfs:domain rdf:resource="#ByteOffsetCompoundPointer"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+	</rdf:Property>
+	<!-- Char Snippet Compound Pointer class -->
+	<rdfs:Class rdf:about="#CharSnippetCompoundPointer">
+		<rdfs:label xml:lang="en">Char Snippet Compound Pointer</rdfs:label>
+		<rdfs:comment xml:lang="en">Pointer to a range with a defined start and a character snippet from there.</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#CompoundPointer"/>
+	</rdfs:Class>
+	<!-- Byte Snippet Compound Pointer class -->
+	<rdfs:Class rdf:about="#ByteSnippetCompoundPointer">
+		<rdfs:label xml:lang="en">Byte Snippet Compound Pointer</rdfs:label>
+		<rdfs:comment xml:lang="en">Pointer to a range with a defined start and a byte snippet from there.</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#CompoundPointer"/>
+	</rdfs:Class>	
+</rdf:RDF>
+
