@@ -1,0 +1,2 @@
+# Data Quality Vocabulary Archetype
+
