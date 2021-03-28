@@ -1,0 +1,1 @@
+prefix sioc: <http://rdfs.org/sioc/ns#>
