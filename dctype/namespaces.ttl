@@ -1,0 +1,1 @@
+prefix dctype: <http://purl.org/dc/dcmitype/>
