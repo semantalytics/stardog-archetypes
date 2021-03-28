@@ -1,0 +1,1 @@
+prefix snomedct: <http://purl.bioontology.org/ontology/SNOMEDCT/>
