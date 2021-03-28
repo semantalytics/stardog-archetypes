@@ -1,1 +1,2 @@
 prefix bflc: <http://id.loc.gov/ontologies/bflc/>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
