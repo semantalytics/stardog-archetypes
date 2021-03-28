@@ -1,0 +1,1 @@
+# SSN-System Archetype
