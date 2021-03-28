@@ -1,0 +1,1 @@
+# Specification Metadata Archetype
