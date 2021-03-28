@@ -1,0 +1,1 @@
+prefix gn: <http://www.geonames.org/ontology#>
