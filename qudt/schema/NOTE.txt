@@ -1,0 +1,2 @@
+https://github.com/qudt/qudt-public-repo
+http://www.qudt.org/2.1/catalog/qudt-catalog.html
